@@ -13,11 +13,11 @@ namespace ACM.BL.Test
         public void InsertSpaceTest()
         {
             // Arrange
-            StringHandler sh = new();
+            var source = "VipulMehta";
             string expected = "Vipul Mehta";
 
             // Act
-            string actual = sh.InsertSpaces("VipulMehta");
+            string actual = source.InsertSpaces();
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -27,11 +27,11 @@ namespace ACM.BL.Test
         public void InsertTextWithSpaceTest()
         {
             // Arrange
-            StringHandler sh = new();
+            var source = "Vipul k Mehta";
             string expected = "Vipul k Mehta";
 
             // Act
-            string actual = sh.InsertSpaces("Vipul k Mehta");
+            string actual = source.InsertSpaces();
 
             // Assert
             Assert.AreEqual(expected, actual);
