@@ -1,8 +1,9 @@
 ﻿using Acme.Common;
+using System.Net.Mail;
 
 namespace ACM.BL
 {
-    public class Product : EntityBase
+    public class Product : EntityBase, ILoggable
     {
         #region Constructors
         public Product()
@@ -58,6 +59,8 @@ namespace ACM.BL
         {
             return new Order();
         }
+
+        public string Log() => $"{ProductId} : {ProductName} Detail : {ProductDescription} Status : {EntityState.ToString()} ";
         #endregion
 
     }

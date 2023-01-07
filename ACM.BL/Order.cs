@@ -1,6 +1,8 @@
-﻿namespace ACM.BL
+﻿using Acme.Common;
+
+namespace ACM.BL
 {
-    public class Order
+    public class Order : EntityBase, ILoggable
     {
         #region Constructors
         public Order()
@@ -28,9 +30,14 @@
         #endregion
 
         #region Methods
-        public bool Validate()
+        public override bool Validate()
         {
-            return true;
+            var isValid = true;
+
+            if (OrderItems.Count == 0) isValid = false;
+            if (OrderDate == null) isValid = false;
+
+            return isValid;
         }
 
         public bool Save()
@@ -42,6 +49,8 @@
         {
             return new Order();
         }
+
+        public string Log() => $"{OrderId} : Date : {this.OrderDate.Value.Date} Status : {EntityState.ToString()} ";
         #endregion
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace ACM.BL
+﻿using Acme.Common;
+
+namespace ACM.BL
 {
-    public class Customer : EntityBase
+    public class Customer : EntityBase, ILoggable
     {
         #region Constructors
         /// <summary>
@@ -15,7 +17,6 @@
             CustomerRepository = new CustomerRepository();
         }
         #endregion
-
 
         #region Properties
         public int CustomerId { get; }
@@ -61,6 +62,8 @@
         }
 
         public override string ToString() => FullName;
+
+        public string Log() => $"{CustomerId} : { FullName } Email : { EmailAddress } Status : { EntityState.ToString() } ";
         #endregion
     }
 }
